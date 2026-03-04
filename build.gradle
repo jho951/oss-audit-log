@@ -1,5 +1,5 @@
 allprojects {
-    group = "com.jho.audit"
+    group = "io.github.jho951"
     version = "1.0.0"
 
     repositories {
@@ -23,19 +23,20 @@ subprojects {
                 from components.java
                 pom {
                     name = project.name
-                    description = "audit-log module"
+                    artifactId = "audit-log-${project.name}"
                 }
             }
         }
         repositories {
             maven {
-                name = "GitHubPackages-audit-log"
+                name = "GitHubPackages"
                 url = uri("https://maven.pkg.github.com/jho951/audit-log")
                 credentials {
-                    username = (findProperty("gpr.user"))
-                    password = (findProperty("gpr.key"))
+                    username = findProperty("githubUsername")
+                    password = findProperty("githubToken")
                 }
             }
         }
     }
 }
+

@@ -9,6 +9,9 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.time.Duration;
 
+/**
+ * 감사 이벤트를 HTTP로 전송하는 sink 구현체입니다.
+ */
 public final class ElkHttpAuditSink implements AuditSink {
 	private final HttpClient client;
 	private final URI endpoint;
@@ -16,6 +19,12 @@ public final class ElkHttpAuditSink implements AuditSink {
 	private final String env;
 	private final String apiKey; // optional
 
+	/**
+	 * @param endpoint ELK/수집 엔드포인트
+	 * @param serviceName 서비스 이름(없으면 {@code unknown-service})
+	 * @param env 실행 환경(없으면 {@code local})
+	 * @param apiKey 인증 API Key(선택)
+	 */
 	public ElkHttpAuditSink(URI endpoint, String serviceName, String env, String apiKey) {
 		this.client = HttpClient.newBuilder()
 			.connectTimeout(Duration.ofSeconds(2))
@@ -26,6 +35,12 @@ public final class ElkHttpAuditSink implements AuditSink {
 		this.apiKey = apiKey; // Elastic API Key 쓰면 "ApiKey xxx"
 	}
 
+	/**
+	 * 이벤트를 비동기 HTTP 요청으로 전송합니다.
+	 * 전송 실패는 fail-open 정책에 따라 예외를 외부로 전파하지 않습니다.
+	 *
+	 * @param event 전송할 감사 이벤트
+	 */
 	@Override
 	public void append(AuditEvent event) {
 		try {

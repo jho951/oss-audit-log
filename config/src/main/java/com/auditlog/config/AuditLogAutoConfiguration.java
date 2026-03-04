@@ -13,11 +13,20 @@ import java.net.URI;
 import java.nio.file.Path;
 import java.util.ArrayList;
 
+/**
+ * 감사 로그 컴포넌트를 자동으로 등록하는 Spring Boot 자동 설정입니다.
+ */
 @Configuration
 @EnableConfigurationProperties(AuditLogProperties.class)
 @ConditionalOnProperty(prefix = "auditlog", name = "enabled", havingValue = "true", matchIfMissing = true)
 public class AuditLogAutoConfiguration {
 
+	/**
+	 * 설정값에 따라 파일 sink 또는 파일+ELK 합성 sink를 구성한 {@link AuditLogger}를 생성합니다.
+	 *
+	 * @param p 감사 로그 설정 프로퍼티
+	 * @return 애플리케이션에서 사용할 감사 로거
+	 */
 	@Bean
 	public AuditLogger auditLogger(AuditLogProperties p) {
 		var sinks = new ArrayList<AuditSink>();

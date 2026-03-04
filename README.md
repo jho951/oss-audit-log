@@ -25,3 +25,15 @@ audit-log/
 │
 └─ config/               # Spring Boot 자동 설정 (starter 역할)
    └─ src/main/java/com/auditlog/config/...
+```
+
+---
+
+## 2. 문서
+
+- 전체 문서 인덱스: [`docs/README.md`](./docs/README.md)
+- 아키텍처: [`docs/architecture.md`](./docs/architecture.md)
+- 설정: [`docs/configuration.md`](./docs/configuration.md)
+- 사용 예시: [`docs/usage.md`](./docs/usage.md)
+- 트러블슈팅: [`docs/troubleshooting.md`](./docs/troubleshooting.md)
+- 운영 런북: [`docs/runbook.md`](./docs/runbook.md)
