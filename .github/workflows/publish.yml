@@ -29,9 +29,11 @@ jobs:
 
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v5
+        with:
+          gradle-version: "8.14"
 
       - name: Build & Test
-        run: ./gradlew clean build --no-daemon --stacktrace
+        run: gradle clean build --no-daemon --stacktrace
 
       - name: Publish
         env:
@@ -39,7 +41,7 @@ jobs:
           ORG_GRADLE_PROJECT_ossrhPassword: ${{ secrets.MAVEN_CENTRAL_PASSWORD }}
           ORG_GRADLE_PROJECT_signingKey: ${{ secrets.MAVEN_CENTRAL_GPG_PRIVATE_KEY }}
           ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.MAVEN_CENTRAL_GPG_PASSPHRASE }}
-        run: ./gradlew publish --no-daemon --stacktrace
+        run: gradle publish --no-daemon --stacktrace
 
       - name: Finalize deployment in Central Portal
         env:
