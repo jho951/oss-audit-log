@@ -71,8 +71,8 @@ subprojects {
                 maven {
                     name = version.toString().endsWith("SNAPSHOT") ? "OSSRHSnapshots" : "OSSRHStaging"
                     url = uri(version.toString().endsWith("SNAPSHOT")
-                        ? "https://s01.oss.sonatype.org/content/repositories/snapshots/"
-                        : "https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/")
+                        ? "https://central.sonatype.com/repository/maven-snapshots/"
+                        : "https://ossrh-staging-api.central.sonatype.com/service/local/staging/deploy/maven2/")
                     credentials {
                         username = ossrhUsername
                         password = ossrhPassword
