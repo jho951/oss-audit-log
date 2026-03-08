@@ -119,9 +119,11 @@ subprojects {
     signing {
         def key = normalizeSigningKey(System.getenv("MAVEN_CENTRAL_GPG_PRIVATE_KEY")
             ?: project.findProperty("mavenCentralSigningKey")
+            ?: project.findProperty("signingKey")
             ?: "")
         def pass = (System.getenv("MAVEN_CENTRAL_GPG_PASSPHRASE")
             ?: project.findProperty("mavenCentralSigningPassword")
+            ?: project.findProperty("signingPassword")
             ?: "").toString()
 
         if (key) {
@@ -146,6 +148,7 @@ subprojects {
 
             def key = (System.getenv("MAVEN_CENTRAL_GPG_PRIVATE_KEY")
                 ?: project.findProperty("mavenCentralSigningKey")
+                ?: project.findProperty("signingKey")
                 ?: "")
             key = normalizeSigningKey(key)
 
@@ -153,7 +156,7 @@ subprojects {
                 throw new GradleException("Missing Maven Central credentials. Set MAVEN_CENTRAL_USERNAME/MAVEN_CENTRAL_PASSWORD (or OSSRH_USERNAME/OSSRH_PASSWORD).")
             }
             if (!key) {
-                throw new GradleException("Missing signing key. Set MAVEN_CENTRAL_GPG_PRIVATE_KEY (or mavenCentralSigningKey).")
+                throw new GradleException("Missing signing key. Set MAVEN_CENTRAL_GPG_PRIVATE_KEY (or mavenCentralSigningKey/signingKey).")
             }
         }
     }
