@@ -1,6 +1,17 @@
+ext.moduleArtifactId = "audit-log-spring-boot-autoconfigure"
+
 dependencies {
     api project(":core")
     compileOnly "org.springframework.boot:spring-boot-autoconfigure:3.4.0"
     compileOnly "org.springframework.boot:spring-boot-configuration-processor:3.4.0"
     compileOnly "org.springframework:spring-context:6.2.0"
+    compileOnly "org.springframework:spring-web:6.2.0"
+    compileOnly "jakarta.servlet:jakarta.servlet-api:6.1.0"
+
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.11.0'
+    testImplementation "org.springframework.boot:spring-boot-autoconfigure:3.4.0"
+    testImplementation "org.springframework:spring-context:6.2.0"
+    testImplementation "org.springframework:spring-web:6.2.0"
+    testImplementation "org.springframework:spring-test:6.2.0"
+    testImplementation "jakarta.servlet:jakarta.servlet-api:6.1.0"
 }
