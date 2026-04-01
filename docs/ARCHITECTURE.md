@@ -4,15 +4,15 @@
 
 ```text
 audit-log/
-├─ api/             : :audit-log-api (artifact: audit-log-api)
-├─ core/            : :audit-log-core (artifact: audit-log-core)
-├─ autoconfigure/   : :audit-log-spring-boot-autoconfigure (artifact: audit-log-spring-boot-autoconfigure)
-└─ starter/         : :audit-log-spring-boot-starter (artifact: audit-log-spring-boot-starter)
+├─ audit-log-api/                       : :audit-log-api (artifact: audit-log-api)
+├─ audit-log-core/                      : :audit-log-core (artifact: audit-log-core)
+├─ audit-log-spring-boot-autoconfigure/ : :audit-log-spring-boot-autoconfigure (artifact: audit-log-spring-boot-autoconfigure)
+└─ audit-log-spring-boot-starter/       : :audit-log-spring-boot-starter (artifact: audit-log-spring-boot-starter)
 ```
 
 ## 핵심 타입
 
-### `:audit-log-api` (`api/`)
+### `:audit-log-api` (`audit-log-api/`)
 
 - 패키지: `com.auditlog.api`, `com.auditlog.spi`
 - `AuditEvent`: 표준 감사 이벤트
@@ -26,7 +26,7 @@ audit-log/
 - `AuditContextResolver`: 실행 컨텍스트 주입
 - `AuditMaskingPolicy`: 민감정보 마스킹 정책
 
-### `:audit-log-core` (`core/`)
+### `:audit-log-core` (`audit-log-core/`)
 
 - 패키지: `com.auditlog.core`
 - `DefaultAuditLogger`: 컨텍스트 주입 + 마스킹 + sink 위임
@@ -35,7 +35,7 @@ audit-log/
 - `CompositeAuditSink`: fan-out
 - `AsyncAuditSink`: executor 기반 비동기 래퍼
 
-### `:audit-log-spring-boot-autoconfigure` (`autoconfigure/`, artifactId: `audit-log-spring-boot-autoconfigure`)
+### `:audit-log-spring-boot-autoconfigure` (`audit-log-spring-boot-autoconfigure/`, artifactId: `audit-log-spring-boot-autoconfigure`)
 
 - 패키지: `com.auditlog.autoconfigure`
 - `AuditLogAutoConfiguration`: starter 자동 구성
@@ -43,7 +43,7 @@ audit-log/
 - `WebAuditContextFilter`: 요청 메타데이터 수집
 - `WebAuditContextResolver`: 요청 컨텍스트를 이벤트에 반영
 
-### `:audit-log-spring-boot-starter` (`starter/`, artifactId: `audit-log-spring-boot-starter`)
+### `:audit-log-spring-boot-starter` (`audit-log-spring-boot-starter/`, artifactId: `audit-log-spring-boot-starter`)
 
 - 역할: Spring Boot 서비스의 기본 진입점 의존성
 - 구성: `:audit-log-spring-boot-autoconfigure` + `spring-boot-starter`를 묶어서 제공

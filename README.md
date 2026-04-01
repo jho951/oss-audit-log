@@ -12,10 +12,10 @@
 
 ```text
 audit-log/
-├─ api/             # :audit-log-api (artifact: audit-log-api)
-├─ core/            # :audit-log-core (artifact: audit-log-core)
-├─ autoconfigure/   # :audit-log-spring-boot-autoconfigure (artifact: audit-log-spring-boot-autoconfigure)
-└─ starter/         # :audit-log-spring-boot-starter (artifact: audit-log-spring-boot-starter)
+├─ audit-log-api/                       # :audit-log-api (artifact: audit-log-api)
+├─ audit-log-core/                      # :audit-log-core (artifact: audit-log-core)
+├─ audit-log-spring-boot-autoconfigure/ # :audit-log-spring-boot-autoconfigure (artifact: audit-log-spring-boot-autoconfigure)
+└─ audit-log-spring-boot-starter/       # :audit-log-spring-boot-starter (artifact: audit-log-spring-boot-starter)
 ```
 
 ## 빠른 시작

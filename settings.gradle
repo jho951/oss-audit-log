@@ -1,13 +1,9 @@
 rootProject.name = "audit-log"
 
 include("audit-log-api")
-project(":audit-log-api").projectDir = file("api")
 
 include("audit-log-core")
-project(":audit-log-core").projectDir = file("core")
 
 include("audit-log-spring-boot-autoconfigure")
-project(":audit-log-spring-boot-autoconfigure").projectDir = file("autoconfigure")
 
 include("audit-log-spring-boot-starter")
-project(":audit-log-spring-boot-starter").projectDir = file("starter")

@@ -14,10 +14,10 @@
 ## 빠른 요약
 
 - 모듈
-  - `:audit-log-api` (`api/`, artifactId: `audit-log-api`)
-  - `:audit-log-core` (`core/`, artifactId: `audit-log-core`)
-  - `:audit-log-spring-boot-autoconfigure` (`autoconfigure/`, artifactId: `audit-log-spring-boot-autoconfigure`)
-  - `:audit-log-spring-boot-starter` (`starter/`, artifactId: `audit-log-spring-boot-starter`)
+  - `:audit-log-api` (`audit-log-api/`, artifactId: `audit-log-api`)
+  - `:audit-log-core` (`audit-log-core/`, artifactId: `audit-log-core`)
+  - `:audit-log-spring-boot-autoconfigure` (`audit-log-spring-boot-autoconfigure/`, artifactId: `audit-log-spring-boot-autoconfigure`)
+  - `:audit-log-spring-boot-starter` (`audit-log-spring-boot-starter/`, artifactId: `audit-log-spring-boot-starter`)
 - 기본 패키지
   - `com.auditlog.api`
   - `com.auditlog.core`
