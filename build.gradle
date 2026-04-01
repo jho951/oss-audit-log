@@ -103,14 +103,10 @@ subprojects {
                 credentials {
                     username = (System.getenv("MAVEN_CENTRAL_USERNAME")
                             ?: project.findProperty("mavenCentralUsername")
-                            ?: System.getenv("OSSRH_USERNAME")
-                            ?: project.findProperty("ossrhUsername")
                             ?: "") as String
 
                     password = (System.getenv("MAVEN_CENTRAL_PASSWORD")
                             ?: project.findProperty("mavenCentralPassword")
-                            ?: System.getenv("OSSRH_PASSWORD")
-                            ?: project.findProperty("ossrhPassword")
                             ?: "") as String
                 }
             }
@@ -137,14 +133,10 @@ subprojects {
         doFirst {
             def u = (System.getenv("MAVEN_CENTRAL_USERNAME")
                 ?: project.findProperty("mavenCentralUsername")
-                ?: System.getenv("OSSRH_USERNAME")
-                ?: project.findProperty("ossrhUsername")
                 ?: "").toString()
 
             def p = (System.getenv("MAVEN_CENTRAL_PASSWORD")
                 ?: project.findProperty("mavenCentralPassword")
-                ?: System.getenv("OSSRH_PASSWORD")
-                ?: project.findProperty("ossrhPassword")
                 ?: "").toString()
 
             def key = (System.getenv("MAVEN_CENTRAL_GPG_PRIVATE_KEY")
@@ -154,10 +146,10 @@ subprojects {
             key = normalizeSigningKey(key)
 
             if (!u || !p) {
-                throw new GradleException("Missing Maven Central credentials. Set MAVEN_CENTRAL_USERNAME/MAVEN_CENTRAL_PASSWORD (or OSSRH_USERNAME/OSSRH_PASSWORD).")
+                throw new GradleException("Missing Maven Central Portal credentials. Set MAVEN_CENTRAL_USERNAME/MAVEN_CENTRAL_PASSWORD (or mavenCentralUsername/mavenCentralPassword).")
             }
             if (!key) {
-                throw new GradleException("Missing signing key. Set MAVEN_CENTRAL_GPG_PRIVATE_KEY (or mavenCentralSigningKey/signingKey).")
+                throw new GradleException("Missing Central Portal signing key. Set MAVEN_CENTRAL_GPG_PRIVATE_KEY (or mavenCentralSigningKey/signingKey).")
             }
         }
     }
