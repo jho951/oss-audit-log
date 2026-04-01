@@ -56,8 +56,7 @@ subprojects {
                 from components.java
 
                 groupId = project.group.toString()
-                def defaultArtifactId = project.name
-                artifactId = (project.findProperty("moduleArtifactId") ?: defaultArtifactId).toString()
+                artifactId = project.name.toString()
                 version = project.version.toString()
 
                 pom {

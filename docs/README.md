@@ -1,6 +1,7 @@
 # Audit Log 문서
 
-`audit-log` 멀티 모듈 프로젝트 문서 인덱스입니다.
+현재 코드 구조는 Gradle project path 기준(`:audit-log-api`, `:audit-log-core`, `:audit-log-spring-boot-autoconfigure`, `:audit-log-spring-boot-starter`)이고,
+배포 artifactId는 각각 `audit-log-api`, `audit-log-core`, `audit-log-spring-boot-autoconfigure`, `audit-log-spring-boot-starter`입니다.
 
 ## 문서 목록
 
@@ -9,13 +10,16 @@
 3. [사용 가이드](./USAGE.md)
 4. [운영 런북](./RUNBOOK.md)
 5. [트러블슈팅](./TROUBLESHOOTING.md)
-6. [작업 이슈 메모](./issues/001-standard-audit-model.md)
 
 ## 빠른 요약
 
-- 목적: 서비스 공통 감사 로그 표준화
-- 런타임: Java 17
-- 모듈:
-  - `api`: 이벤트 모델, 로거 인터페이스, SPI
-  - `core`: masking, 기본 logger, file/http/async/composite sink
-  - `config`: Spring Boot 자동 설정, 웹 요청 메타데이터 수집
+- 모듈
+  - `:audit-log-api` (`api/`, artifactId: `audit-log-api`)
+  - `:audit-log-core` (`core/`, artifactId: `audit-log-core`)
+  - `:audit-log-spring-boot-autoconfigure` (`autoconfigure/`, artifactId: `audit-log-spring-boot-autoconfigure`)
+  - `:audit-log-spring-boot-starter` (`starter/`, artifactId: `audit-log-spring-boot-starter`)
+- 기본 패키지
+  - `com.auditlog.api`
+  - `com.auditlog.core`
+  - `com.auditlog.autoconfigure`
+- 설정 prefix: `auditlog.*`

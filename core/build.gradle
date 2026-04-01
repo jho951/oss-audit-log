@@ -1,3 +1,4 @@
 dependencies {
-    api project(":api")
+    api project(":audit-log-api")
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.11.0'
 }

@@ -1,39 +1,45 @@
+
 # audit-log
 
-여러 서비스에서 공통으로 사용할 수 있는 **Audit Log 인프라 모듈**입니다.  
-`누가(actor), 언제(timestamp), 어디서(ip), 무엇을(action/resource), 어떤 결과(result)`를 표준화된 포맷으로 기록해서,  
-**보안·감사·장애 분석**에 활용할 수 있도록 설계되었습니다.
+`누가(actor), 언제(occurredAt), 어디서(clientIp), 무엇을(action/resource), 어떤 결과(result)`를
+표준 필드로 기록해서 **보안 감사, 운영 추적, 장애 분석**에 재사용할 수 있도록 만든 멀티 모듈 라이브러리입니다.
 
 - **언어**: Java 17
 - **빌드 도구**: Gradle (멀티 모듈)
-- **Spring 의존성**: `config` 모듈에서만 사용 (core/api는 순수 Java)
+- **Spring 진입점**: `:audit-log-spring-boot-starter` 모듈 권장 (`:audit-log-spring-boot-autoconfigure` 직접 의존은 고급 사용)
 
----
-
-## 1. 모듈 구조
+## 모듈 구조
 
 ```text
 audit-log/
-├─ settings.gradle
-├─ build.gradle          # 공통 Gradle 설정
-│
-├─ core/                 # 순수 코어 도메인 (AuditEvent, AuditSink, AuditLogger 등)
-│  └─ src/main/java/com/auditlog/core/...
-│
-├─ api/                  # 서비스에서 직접 쓸 수 있는 Facade (static AuditLog 등)
-│  └─ src/main/java/com/auditlog/api/...
-│
-└─ config/               # Spring Boot 자동 설정 (starter 역할)
-   └─ src/main/java/com/auditlog/config/...
+├─ api/             # :audit-log-api (artifact: audit-log-api)
+├─ core/            # :audit-log-core (artifact: audit-log-core)
+├─ autoconfigure/   # :audit-log-spring-boot-autoconfigure (artifact: audit-log-spring-boot-autoconfigure)
+└─ starter/         # :audit-log-spring-boot-starter (artifact: audit-log-spring-boot-starter)
 ```
 
----
+## 빠른 시작
 
-## 2. 문서
+```gradle
+dependencies {
+    implementation "io.github.jho951:audit-log-spring-boot-starter:<version>"
+}
+```
 
-- 전체 문서 인덱스: [`docs/README.md`](./docs/README.md)
-- 아키텍처: [`docs/architecture.md`](./docs/architecture.md)
-- 설정: [`docs/configuration.md`](./docs/configuration.md)
-- 사용 예시: [`docs/usage.md`](./docs/usage.md)
-- 트러블슈팅: [`docs/troubleshooting.md`](./docs/troubleshooting.md)
-- 운영 런북: [`docs/runbook.md`](./docs/runbook.md)
+## 포함 범위
+
+- 표준 감사 이벤트 모델 (`AuditEvent`, `AuditResult`, `AuditActorType`)
+- 성공/실패 기록 보조 API (`logSuccess`, `logFailure`)
+- `details` 민감정보 마스킹
+- 파일 sink 기본 제공, HTTP sink 선택 제공
+- 웹 환경의 `traceId`, `requestId`, `clientIp`, `userAgent` 자동 주입
+- async sink 래핑 옵션
+
+## 문서
+
+- [문서 인덱스](./docs/README.md)
+- [아키텍처](./docs/ARCHITECTURE.md)
+- [설정](./docs/CONFIGURATION.md)
+- [사용 예시](./docs/USAGE.md)
+- [운영 런북](./docs/RUNBOOK.md)
+- [트러블슈팅](./docs/TROUBLESHOOTING.md)
